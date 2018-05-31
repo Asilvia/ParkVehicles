@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Vehicles</string>
     <string name="title_item_detail">Item Detail</string>
+    <string name="details_title_vehicle_id">Vehicle id</string>
+    <string name="details_title_country">Country</string>
+    <string name="details_title_color">Color</string>
+    <string name="details_title_type">Type</string>
+    <string name="details_title_default">Default</string>
+    <string name="vehicle">Vehicle</string>
 </resources>
