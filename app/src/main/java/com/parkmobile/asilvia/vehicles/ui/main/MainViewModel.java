@@ -24,7 +24,7 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
     private final DataManager mDataManager;
     private LiveData<List<Vehicle>> mObservableVehicles;
 
-    private final MutableLiveData<Vehicle> selected = new MutableLiveData<Vehicle>();
+    public final MutableLiveData<Vehicle> selected;
 
 
 
@@ -32,6 +32,7 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
         super(mDataManager);
         this.mDataManager = mDataManager;
         mObservableVehicles = AbsentLiveData.create();
+        selected = new MutableLiveData<Vehicle>();
     }
 
     public LiveData<List<Vehicle>> getmObservableVehicles()
@@ -41,13 +42,12 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
 
     void getVehiclesList()
     {
-        Timber.d(" ===== getVehiclesList ===== " );
+
         mObservableVehicles = Transformations.switchMap(mDataManager.getVehicles(), vehicleResponse ->{
             MediatorLiveData<List<Vehicle>> listVehicles = new MediatorLiveData<>();
 
             if (vehicleResponse.isSuccessful())
             {
-                Timber.d(" ===== isSuccessfull ===== " );
                 listVehicles.postValue(vehicleResponse.body.getVehicles());
             }
 
@@ -59,13 +59,11 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
 
 
     public void select(Vehicle item) {
-
         selected.setValue(item);
 
     }
 
     public LiveData<Vehicle> getSelected() {
-        Timber.d("teste=========111 ");
         return selected;
     }
 

@@ -11,6 +11,10 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "MAINBASEURL", "\"http://private-6d86b9-vehicles5.apiary-mock.com/\""
         buildConfigField "int", "CACHETIME", "432000" // 5days
+
+        testOptions {
+            unitTests.returnDefaultValues = true
+        }
     }
     buildTypes {
         release {
@@ -73,4 +77,10 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
 
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "android.arch.core:core-testing:$arch_version"
+    testCompile("android.arch.core:core-testing:$arch_version", {
+        exclude group: 'com.android.support', module: 'support-compat'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+    })
 }

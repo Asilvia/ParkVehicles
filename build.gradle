@@ -31,6 +31,7 @@ ext.arch_version = "1.0.0"
 ext.junit_version = "4.12"
 ext.espresso_version = "3.0.1"
 ext.mockito_version = "2.7.19"
+ext.arch_version = "1.0.0"
 
 allprojects {
     repositories {
